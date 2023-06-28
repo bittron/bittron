@@ -51,7 +51,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     const char* pszTimestamp = "Bittron a Decentralized Cryptocurrency Created in 15 April 2020 at India";
-    const CScript genesisOutputScript = CScript() << ParseHex("161684710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
+    const CScript genesisOutputScript = CScript() << ParseHex("8a8b84710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -70,14 +70,14 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nSubsidyHalvingInterval = 2102400;
+        consensus.nSubsidyHalvingInterval = 12614400;
         // consensus.BIP34Height = 710000;
         // consensus.BIP34Hash = uint256S("fa09d204a83a768ed5a7c8d441fa62f2043abf420cff1226c7b4329aeb9d51cf");
         // consensus.BIP65Height = 918684; // bab3041e8977e0dc3eeff63fe707b92bde1dd449d8efafb248c27c8264cc311a
         // consensus.BIP66Height = 811879; // 7aceee012833fa8952f8835d8b1b3ae233cd6ab08fdb27a771d2bd7bdc491894
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); 
-        consensus.nPowTargetTimespan = 28 * 24 * 60 * 60; // 28 days
-        consensus.nPowTargetSpacing = 1 * 60;
+        consensus.nPowTargetTimespan = 2 * 24 * 60 * 60; // 2 days
+        consensus.nPowTargetSpacing = 10;
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 6048; // 75% of 8064
@@ -114,13 +114,13 @@ public:
         nDefaultPort = 7333;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1586925000, 2000112490, 0x1e0ffff0, 1, 32 * COIN);
+        genesis = CreateGenesisBlock(1586925000, 2000249944, 0x1e0ffff0, 1, 64 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x15b5908418f6f06a1ee85d820ffbf971f5755239ee40e1420bb63c682b883fda"));
-        assert(genesis.hashMerkleRoot == uint256S("0x57917b5c124ed8b47cfc5c5686e0efba47b1b8221839a13fbd9ad7ae790f66b5"));
+        assert(consensus.hashGenesisBlock == uint256S("0xf4dab932751b2a6afae3dcc199cd995a0924b92901233fe0be75cf7841d4ab63"));
+        assert(genesis.hashMerkleRoot == uint256S("0x0fd3ab15f9be5e105ffc4cd86cda41821a767ad8f1b6844380692e1bb15e0aba"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.push_back(CDNSSeedData("15.207.253.61", "15.207.253.61", true));
+        vSeeds.push_back(CDNSSeedData("3.7.29.82", "3.7.29.82", true));
         // vSeeds.push_back(CDNSSeedData("thrasher.io", "dnsseed.thrasher.io", true));
         // vSeeds.push_back(CDNSSeedData("bittrontools.com", "dnsseed.bittrontools.com"));
         // vSeeds.push_back(CDNSSeedData("bittronpool.org", "dnsseed.bittronpool.org"));
@@ -142,7 +142,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x15b5908418f6f06a1ee85d820ffbf971f5755239ee40e1420bb63c682b883fda"))
+            (  0, uint256S("0xf4dab932751b2a6afae3dcc199cd995a0924b92901233fe0be75cf7841d4ab63"))
             // (  4032, uint256S("0x9ce90e427198fc0ef05e5905ce3503725b80e26afd35a987965fd7e3d9cf0846"))
             // (  8064, uint256S("0xeb984353fc5190f210651f150c40b8a4bab9eeeff0b729fcb3987da694430d70"))
             // ( 16128, uint256S("0x602edf1859b7f9a6af809f1d9b0e6cb66fdc1d4d9dcd7a4bec03e12a1ccd153d"))
@@ -178,14 +178,14 @@ class CTestNetParams : public CChainParams {
 public:
     CTestNetParams() {
         strNetworkID = "test";
-        consensus.nSubsidyHalvingInterval = 2102400;
+        consensus.nSubsidyHalvingInterval = 12614400;
         // consensus.BIP34Height = 76;
         // consensus.BIP34Hash = uint256S("8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573");
         // consensus.BIP65Height = 76; // 8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573
         // consensus.BIP66Height = 76; // 8075c771ed8b495ffd943980a95f702ab34fce3c8c54e379548bda33cc8c0573
         consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 28 * 24 * 60 * 60; // 28 days
-        consensus.nPowTargetSpacing = 1 * 60;
+        consensus.nPowTargetTimespan = 2 * 24 * 60 * 60; // 2 days
+        consensus.nPowTargetSpacing = 10;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
@@ -217,15 +217,15 @@ public:
         nDefaultPort = 17335;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1586925000, 128518, 0x1e0ffff0, 1, 32 * COIN);
+        genesis = CreateGenesisBlock(1586925000, 515034, 0x1e0ffff0, 1, 64 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xf9f90198c06b4cebe89a1f11cb194c7b1a95669df482b7173988f6d57151c54d"));
-        assert(genesis.hashMerkleRoot == uint256S("0x57917b5c124ed8b47cfc5c5686e0efba47b1b8221839a13fbd9ad7ae790f66b5"));
+        assert(consensus.hashGenesisBlock == uint256S("0x45aef62f97ee0277389021dcd34a8d545b20a1e943ad9cbe3c783732e80f453e"));
+        assert(genesis.hashMerkleRoot == uint256S("0x0fd3ab15f9be5e105ffc4cd86cda41821a767ad8f1b6844380692e1bb15e0aba"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.push_back(CDNSSeedData("15.207.253.61", "15.207.253.61"));
+        vSeeds.push_back(CDNSSeedData("3.7.29.82", "3.7.29.82"));
         // vSeeds.push_back(CDNSSeedData("loshan.co.uk", "seed-b.bittron.loshan.co.uk", true));
         // vSeeds.push_back(CDNSSeedData("thrasher.io", "dnsseed-testnet.thrasher.io", true));
 
@@ -245,7 +245,7 @@ public:
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            ( 0, uint256S("0xf9f90198c06b4cebe89a1f11cb194c7b1a95669df482b7173988f6d57151c54d")),
+            ( 0, uint256S("0x45aef62f97ee0277389021dcd34a8d545b20a1e943ad9cbe3c783732e80f453e")),
         };
 
         chainTxData = ChainTxData{
@@ -272,8 +272,8 @@ public:
         // consensus.BIP65Height = 1351; // BIP65 activated on regtest (Used in rpc activation tests)
         // consensus.BIP66Height = 1251; // BIP66 activated on regtest (Used in rpc activation tests)
         // consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowTargetTimespan = 28 * 24 * 60 * 60; // 28 days
-        consensus.nPowTargetSpacing = 1 * 60;
+        consensus.nPowTargetTimespan = 2 * 24 * 60 * 60; // 2 days
+        consensus.nPowTargetSpacing = 10;
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
@@ -301,10 +301,10 @@ public:
         nDefaultPort = 17444;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1586925000, 0, 0x207fffff, 1, 32 * COIN);
+        genesis = CreateGenesisBlock(1586925000, 0, 0x207fffff, 1, 64 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0xaf583bdff21772bda1651ef5dbee0e7b3b4095c0960d64fef91ae464864877b3"));
-        assert(genesis.hashMerkleRoot == uint256S("0x57917b5c124ed8b47cfc5c5686e0efba47b1b8221839a13fbd9ad7ae790f66b5"));
+        assert(consensus.hashGenesisBlock == uint256S("0xa7ac3bf316e04314eb8584b861ea21e5260ab75d057b9bb58aca354746bfb2e5"));
+        assert(genesis.hashMerkleRoot == uint256S("0x0fd3ab15f9be5e105ffc4cd86cda41821a767ad8f1b6844380692e1bb15e0aba"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
@@ -316,7 +316,7 @@ public:
 
         checkpointData = (CCheckpointData){
             boost::assign::map_list_of
-            ( 0, uint256S("0xaf583bdff21772bda1651ef5dbee0e7b3b4095c0960d64fef91ae464864877b3"))
+            ( 0, uint256S("0xa7ac3bf316e04314eb8584b861ea21e5260ab75d057b9bb58aca354746bfb2e5"))
         };
 
         chainTxData = ChainTxData{
