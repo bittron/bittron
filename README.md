@@ -1,9 +1,9 @@
 Bittron Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/bittron-project/bittron.svg?branch=master)](https://travis-ci.org/bittron-project/bittron)
+[![Build Status](https://travis-ci.org/bittron/bittron.svg?branch=master)](https://travis-ci.org/bittron/bittron)
 
-https://bittron.org
+https://www.bittron.org
 
 What is Bittron?
 ----------------
@@ -15,7 +15,7 @@ out collectively by the network. Bittron Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Bittron Core software, see [https://bittron.org](https://bittron.org).
+the Bittron Core software, see [https://www.bittron.org](https://www.bittron.org).
 
 License
 -------
@@ -27,7 +27,7 @@ Development Process
 -------------------
 
 The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/bittron-project/bittron/tags) are created
+completely stable. [Tags](https://github.com/bittron/bittron/tags) are created
 regularly to indicate new official, stable release versions of Bittron Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
